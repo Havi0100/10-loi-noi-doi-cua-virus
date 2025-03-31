@@ -47,12 +47,12 @@ document.addEventListener("DOMContentLoaded", function() {
             <button onclick="this.parentNode.remove()">OK</button>
         `;
         document.body.appendChild(popup);
-        
-        // Tự động đóng pop-up sau 3 giây
-        setTimeout(() => popup.remove(), 3000);
     }
 
-    // Hiện pop-up liên tục với nội dung hack não 😈
+    // Hiện pop-up ngay lập tức khi trang mở
+    showPopup("⚠ Tài khoản của bạn đang bị xâm nhập! Hãy xác minh ngay!");
+
+    // Hiện pop-up liên tục mỗi 3 giây
     let messages = [
         "🔥 Cảnh báo: Gmail của bạn có nguy cơ bị xóa!",
         "⚠ Số điện thoại của bạn vừa được truy cập từ IP lạ!",
@@ -65,12 +65,12 @@ document.addEventListener("DOMContentLoaded", function() {
     setInterval(() => {
         showPopup(messages[index]);
         index = (index + 1) % messages.length;
-    }, 4000); // Hiện pop-up mới sau mỗi 4 giây
+    }, 3000); // Pop-up mới mỗi 3 giây
 
-    // Sau 30 giây hiện thông báo troll 🤣
+    // Sau 20 giây hiện thông báo troll 🤣
     setTimeout(() => {
-        alert("🎉 Cá Tháng Tư Vui Vẻ! Bạn đã bị troll! 😂");
-    }, 30000);
+        alert("🎉 Cá Tháng Tư Vui Vẻ! Kiệt đã bị troll! 😂");
+    }, 20000);
 });
 </script>
 

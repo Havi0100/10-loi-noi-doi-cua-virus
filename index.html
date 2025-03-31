@@ -3,32 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cảnh báo bảo mật</title>
+    <title>Cảnh Báo Bảo Mật!</title>
     <style>
         body {
             background-color: black;
             color: red;
-            text-align: center;
             font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
         }
-        .warning {
-            font-size: 20px;
-            margin-top: 20px;
+        .popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: red;
+            color: white;
+            padding: 20px;
+            font-size: 18px;
+            z-index: 9999;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.5);
+            animation: shake 0.5s infinite alternate;
+        }
+        @keyframes shake {
+            from { transform: translate(-50%, -50%) rotate(-1deg); }
+            to { transform: translate(-50%, -50%) rotate(1deg); }
         }
     </style>
-    <script>
-        function showPopups() {
-            setTimeout(() => alert("🚨 CẢNH BÁO: Tài khoản của bạn đang bị xâm nhập!"), 1000);
-            setTimeout(() => alert("❌ Gmail của bạn đã bị rò rỉ trên web đen!"), 3000);
-            setTimeout(() => alert("⚠️ Số điện thoại [0785-000-127] đang bị sử dụng trái phép!"), 5000);
-            setTimeout(() => alert("💀 Ngân hàng phát hiện giao dịch đáng ngờ!"), 7000);
-            setTimeout(() => alert("🤣 CÁ THÁNG TƯ VUI VẺ! Bạn bị lừa rồi! 😆"), 10000);
-        }
-    </script>
 </head>
-<body onload="showPopups()">
-    <h1 class="warning">🔥 CẢNH BÁO HỆ THỐNG 🔥</h1>
-    <p class="warning">Hệ thống phát hiện hoạt động bất thường trên tài khoản của bạn!</p>
-    <p class="warning">Vui lòng KHÔNG nhập thông tin cá nhân vào bất kỳ đâu!</p>
+<body>
+
+<h1>🔴 Hệ Thống Đang Phát Hiện Hoạt Động Đáng Ngờ 🔴</h1>
+<p>⚠ Tài khoản của bạn có nguy cơ bị truy cập trái phép!</p>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    function showPopup(message) {
+        let popup = document.createElement("div");
+        popup.className = "popup";
+        popup.innerHTML = `
+            <strong>${message}</strong><br><br>
+            <button onclick="this.parentNode.remove()">OK</button>
+        `;
+        document.body.appendChild(popup);
+        
+        // Tự động đóng pop-up sau 3 giây
+        setTimeout(() => popup.remove(), 3000);
+    }
+
+    // Hiện pop-up liên tục với nội dung hack não 😈
+    let messages = [
+        "🔥 Cảnh báo: Gmail của bạn có nguy cơ bị xóa!",
+        "⚠ Số điện thoại của bạn vừa được truy cập từ IP lạ!",
+        "💳 Tài khoản ngân hàng của bạn đã bị khóa tạm thời!",
+        "🛑 Đã phát hiện thiết bị lạ đăng nhập vào tài khoản!",
+        "⛔ Cảnh báo: Mật khẩu của bạn đã bị lộ trên dark web!"
+    ];
+    
+    let index = 0;
+    setInterval(() => {
+        showPopup(messages[index]);
+        index = (index + 1) % messages.length;
+    }, 4000); // Hiện pop-up mới sau mỗi 4 giây
+
+    // Sau 30 giây hiện thông báo troll 🤣
+    setTimeout(() => {
+        alert("🎉 Cá Tháng Tư Vui Vẻ! Bạn đã bị troll! 😂");
+    }, 30000);
+});
+</script>
+
 </body>
 </html>

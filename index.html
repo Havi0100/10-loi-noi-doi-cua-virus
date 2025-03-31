@@ -49,27 +49,32 @@ document.addEventListener("DOMContentLoaded", function() {
         document.body.appendChild(popup);
     }
 
-    // Hiện pop-up ngay lập tức khi trang mở
-    showPopup("⚠ Tài khoản của bạn đang bị xâm nhập! Hãy xác minh ngay!");
-
-    // Hiện pop-up liên tục mỗi 3 giây
     let messages = [
         "🔥 Cảnh báo: Gmail của bạn có nguy cơ bị xóa!",
-        "⚠ Số điện thoại của bạn vừa được truy cập từ IP lạ!",
+        "⚠ Số điện thoại của bạn vừa bị truy cập từ IP lạ!",
         "💳 Tài khoản ngân hàng của bạn đã bị khóa tạm thời!",
         "🛑 Đã phát hiện thiết bị lạ đăng nhập vào tài khoản!",
         "⛔ Cảnh báo: Mật khẩu của bạn đã bị lộ trên dark web!"
     ];
-    
+
     let index = 0;
-    setInterval(() => {
+
+    function triggerPopups() {
         showPopup(messages[index]);
         index = (index + 1) % messages.length;
-    }, 3000); // Pop-up mới mỗi 3 giây
+
+        // Tiếp tục tạo pop-up mới ngay khi bấm OK hoặc thực hiện thao tác khác
+        setTimeout(triggerPopups, 500);
+    }
+
+    // Kích hoạt pop-up ngay khi có tương tác
+    document.addEventListener("click", triggerPopups);
+    document.addEventListener("scroll", triggerPopups);
+    document.addEventListener("touchstart", triggerPopups);
 
     // Sau 20 giây hiện thông báo troll 🤣
     setTimeout(() => {
-        alert("🎉 Cá Tháng Tư Vui Vẻ! Kiệt đã bị troll! 😂");
+        alert("🎉 Cá Tháng Tư Vui Vẻ! Bạn đã bị troll! 😂");
     }, 20000);
 });
 </script>
